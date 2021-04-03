@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { ControlBar } from "./components/ControlBar";
+import { TestCaseDisplay } from "./components/TestCaseDisplay";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ControlBar></ControlBar>
+      <TestCaseDisplay
+        texts={[
+          { literal: "brown", color: "blue" },
+          { literal: "green", color: "purple" },
+          { literal: "brown", color: "green" },
+          { literal: "red", color: "red" },
+          { literal: "blue", color: "blue" },
+        ]}
+      ></TestCaseDisplay>
     </div>
   );
 }
