@@ -6,47 +6,47 @@ export const ControlBar = () => {
   const keyPressed = useKeyControl();
 
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
-      <div
+    <div style={{ flex: 1, display: "flex", flexDirection: "row" }}>
+      <p
         style={{
           ...hstyle,
           color: keyPressed === KeyControl.Up ? "black" : "gray",
         }}
       >
         ↑紅色
-      </div>
-      <div
+      </p>
+      <p
         style={{
           ...hstyle,
           color: keyPressed === KeyControl.Down ? "black" : "gray",
         }}
       >
         ↓綠色
-      </div>
-      <div
+      </p>
+      <p
         style={{
           ...hstyle,
           color: keyPressed === KeyControl.Left ? "black" : "gray",
         }}
       >
         ←紫色
-      </div>
-      <div
+      </p>
+      <p
         style={{
           ...hstyle,
           color: keyPressed === KeyControl.Right ? "black" : "gray",
         }}
       >
         →藍色
-      </div>
-      <div
+      </p>
+      <p
         style={{
           ...hstyle,
           color: keyPressed === KeyControl.Esc ? "black" : "gray",
         }}
       >
         esc拒絕
-      </div>
+      </p>
     </div>
   );
 };

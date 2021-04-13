@@ -1,6 +1,9 @@
+import { KeyControl } from "./useKeyControl";
+import React from "react";
+import { sampleRandomInt } from "../utils";
 import { useWindowSize } from "react-use";
 
-const colorToChinses = (color: Color): string => {
+export const colorToChinses = (color: Color): string => {
   switch (color) {
     case "red":
       return "紅色";
@@ -23,39 +26,33 @@ export interface TextPair {
 }
 
 export interface TestCase {
-  texts: [TextPair, TextPair, TextPair, TextPair, TextPair];
+  texts: TextPair[];
+  ans: KeyControl;
+  category: string;
 }
 
-const getRandomInt = (max: number): number => {
-  return Math.floor(Math.random() * max);
+export type TestCaseDisplayProps = {
+  testcase: TestCase;
 };
 
-const sampleRandomInt = (max: number, length: number): number[] => {
-  const set = new Set<number>();
-  while (set.size < length) {
-    set.add(getRandomInt(max));
-  }
-  return Array.from(set.values());
-};
-
-export const TestCaseDisplay = (testcase: TestCase) => {
+export const TestCaseDisplay = React.memo((props: TestCaseDisplayProps) => {
   const { width, height } = useWindowSize();
 
-  const padding = 60;
-  const grid = 10;
+  const padding = 100;
+  const grid = props.testcase.texts.length * 2;
 
-  const fontSize = Math.min(width, height) / 10;
+  const fontSize = Math.min(width, height) / 11;
 
   const divWidth = (width - 2 * padding) / grid;
   const divHeight = (height - 2 * padding) / grid;
 
   const textDivs = [];
 
-  const xAnchor = sampleRandomInt(grid, testcase.texts.length);
-  const yAnchor = sampleRandomInt(grid, testcase.texts.length);
+  const xAnchor = sampleRandomInt(grid, props.testcase.texts.length);
+  const yAnchor = sampleRandomInt(grid, props.testcase.texts.length);
 
   let i = 0;
-  for (const text of testcase.texts) {
+  for (const text of props.testcase.texts) {
     textDivs.push(
       <div
         style={{
@@ -73,4 +70,4 @@ export const TestCaseDisplay = (testcase: TestCase) => {
   }
 
   return <div style={{ position: "relative" }}>{textDivs}</div>;
-};
+});
