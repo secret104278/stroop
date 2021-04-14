@@ -91,10 +91,10 @@ function App() {
           <p>
             ({currentIndex + 1} / {testcases.length})
           </p>
-          <p>
+          {/* <p>
             正確答案: {keyControlToString(testcase.ans)} , 類別:{" "}
             {testcase.category}
-          </p>
+          </p> */}
           <ControlBar></ControlBar>
         </div>
         <TestCaseDisplay testcase={testcase}></TestCaseDisplay>
